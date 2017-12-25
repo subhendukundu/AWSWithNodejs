@@ -1,0 +1,23 @@
+{
+    "extends": "xtdet",
+    "env": {
+      "es6": true,
+      "jasmine": true,
+      "browser": false
+    },
+    "parserOptions": {
+      "ecmaFeatures": {
+        "modules": true
+      }
+    },
+    "rules": {
+      "no-unused-vars": [
+        2,
+        {
+          "vars": "local",
+          "args": "after-used",
+          "ignoreRestSiblings": true
+        }
+      ]
+    }
+  }
