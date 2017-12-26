@@ -8,5 +8,4 @@ exports.Config = {
     xmlgetallmodel: 'yourxmlgetallmodel',
     wsdlUrl: 'yourwsdlUrl'
   }
-
 };
