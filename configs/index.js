@@ -7,5 +7,12 @@ exports.Config = {
     password: 'Yourpassword',
     xmlgetallmodel: 'yourxmlgetallmodel',
     wsdlUrl: 'yourwsdlUrl'
+  },
+  getmodelserviceschedule: {
+    dealerCode: 'YourdealerCode',
+    emailAddress: 'YouremailAddress',
+    password: 'Yourpassword',
+    xmlgetallmodel: 'yourxmlgetallmodel',
+    wsdlUrl: 'yourwsdlUrl'
   }
 };

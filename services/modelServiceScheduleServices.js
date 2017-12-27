@@ -1,6 +1,8 @@
 import rp from 'request-promise';
 import xml2js from 'xml2js';
 
+import { Config } from '../configs';
+
 /**
   * @description Function that returns all model service schedule based on query from a SOAP Web Service client
   * @param {Object - modelCode, make } - Query params for the API call.
@@ -10,14 +12,15 @@ import xml2js from 'xml2js';
 
 exports.modelServiceScheduleServices = (query) => {
   const { modelCode, make } = query;
-  const xml = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:get="http://www.nidasu.com/soap/getmodelserviceschedulev06">
+  const { xmlgetallmodel, wsdlUrl, dealerCode, emailAddress, password } = Config.getmodelserviceschedule;
+  const xml = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:get="${xmlgetallmodel}">
                   <soapenv:Header/>
                   <soapenv:Body>
                     <get:InputParams>
                         <!--Optional:-->
-                        <get:dealerCode>DIGITALDIALOGUE</get:dealerCode>
-                        <get:emailAddress>datasupply@digitaldialogue.com.au</get:emailAddress>
-                        <get:password>$@DigiDia8fca</get:password>
+                        <get:dealerCode>${dealerCode}</get:dealerCode>
+                        <get:emailAddress>${emailAddress}</get:emailAddress>
+                        <get:password>${password}</get:password>
                         <get:make>${make}</get:make>
                         <!--Optional:-->
                         <get:modelCodeDealer></get:modelCodeDealer>
@@ -36,7 +39,7 @@ exports.modelServiceScheduleServices = (query) => {
                 </soapenv:Envelope>`;
 
   const options = {
-    url: 'https://fcaat.com.au/fca/services/GetModelServiceScheduleV06?wsdl',
+    url: wsdlUrl,
     method: 'POST',
     body: xml,
     headers: {
